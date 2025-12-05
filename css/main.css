@@ -1,0 +1,61 @@
+.header > div {
+
+    display: flex;
+    margin: 10px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.header__logo{
+    color: red;
+    font-size: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.header__nav{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+.category-item__img{
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+    border-color: chocolate;
+    flex-wrap: wrap;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* produtos do menu*/
+
+.card__image-wrapper img{
+    width: 200px; 
+    max-width: 100%; 
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    margin-right: 20px; 
+    transition: all 0.3s ease;
+}
+
+.products__title h2 {
+    text-align: center;
+    padding: 60px 10%;
+    padding-top: 20px;
+}
