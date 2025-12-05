@@ -13,9 +13,12 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-.header__nav{
+.header__nav, ul, li{
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: center;
+    gap: 20px;
+
 }
 
 
