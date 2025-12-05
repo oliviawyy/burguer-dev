@@ -1,36 +1,100 @@
-.header > div {
+/* Header - MAJU D */
 
-    display: flex;
+.header__container{
+    width: 100%;
     margin: 10px;
-    justify-content: space-between;
-    align-items: center;
+    padding: 0 var(--spacing-md);
+    display: flex;
 
 }
+.header__menu{
+    display: flex;
+    gap: var(--spacing-md);
+  
+}
 
+.header__nav{
+   align-items: center;
+}
 .header__logo{
     color: red;
     font-size: 20px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
+} 
 
-.header__nav, ul, li{
-    margin: 0;
-    padding: 0;
+.header__social{
     display: flex;
-    gap: 20px;
+}
 
+.header__icon{
+    justify-content: flex-end;
+}
+
+/* Banner - MAJU D */
+
+.banner{
+    /* aplica a imagem de fundo e um gradiente */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), 
+    url('https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=200');
+    
+    background-size: cover;
+    background-position: center;
+
+    height: 400px;
 }
 
 
 
-
+/* escolha rapida - OLIVIA */
 
 .category-item__img{
     border-radius: 100px;
     width: 150px;
     height: 150px;
     border-color: chocolate;
-    flex-wrap: wrap;
+}
+
+.button--small {
+    background-color: #F8B46C; 
+    color: white; 
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px; 
+   
+}
+ 
+.categories__title{
+    text-align: center;
+    font-weight: bold;
+    justify-content: center;
+    text-transform: uppercase;
+    color:rgb(255, 230, 0);
+}
+
+.category-item {
+    /* Configura este item como um container flexível */
+    display: flex; 
+    /* Força os filhos (imagem e botão) a ficarem em coluna (um embaixo do outro) */
+    flex-direction: column; 
+    /* Centraliza os filhos na horizontal */
+    align-items: center; 
+    padding-bottom: 30px;
+}
+
+.categories_list{
+    display: flex ;
+    flex-direction: row ;
+    flex-wrap: wrap ;
+    justify-content: center ;
+    gap: 20px;
+
+}
+
+.categories_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
 
@@ -38,27 +102,55 @@
 
 
 
-
-
-
-
-
-
-
-
-/* produtos do menu*/
+/* produtos do menu - ana  */
 
 .card__image-wrapper img{
-    width: 200px; 
-    max-width: 100%; 
+    width: 100%;
+    height: 20%;
+    display: block;
+    padding-bottom: 90px;
+    overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    margin-right: 20px; 
     transition: all 0.3s ease;
 }
 
 .products__title h2 {
+    padding: 20px 0 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
     text-align: center;
-    padding: 60px 10%;
-    padding-top: 20px;
+    gap: 100px;
+    width: 45%;
+    box-sizing: border-box;
+}
+
+
+.card__description p {
+    text-align: center;
+    padding: 20px 20px 60px 20px;
+    width: 45%;
+    box-sizing: border-box;
+}
+
+/* footer - gabi */
+
+.footer {
+    width: 100%;
+    background: #111;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: sticky; 
+    top: 0;          
+    z-index: 100;
+    min-height: 60px;
+    bottom: 0;
+}
+
+.footer__text{
+    margin-top: 10px;
+    font-family: "Space Mono", monospace;
+    color: #ffffff;
 }
