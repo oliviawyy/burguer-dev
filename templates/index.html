@@ -17,15 +17,15 @@
     />
 
 <!-- Incluir os links para CSS (pode ter mais arquivos ou arquivos com nomes diferentes) -->
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/variables.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/media.css" />
+    <link rel="stylesheet" href="../static/css/reset.css" />
+    <link rel="stylesheet" href="../static/css/variables.css" />
+    <link rel="stylesheet" href="../static/css/main.css" />
+    <link rel="stylesheet" href="../static/css/media.css" />
   </head>
   <body>
 
   <!-- Header e Navbar -->
-    <header class="header">
+    <!-- <header class="header">
       <div class="header__container">
         <a href="#" class="header__logo">DevBurger</a>
 
@@ -59,8 +59,13 @@
           <span class="material-symbols-outlined">menu</span>
         </button>
       </div>
-    </header>
-    
+    </header> -->
+
+{% extends "layout.html" %}
+
+
+{% block conteudo %}
+
 <!-- Banner -->
     <section class="banner">
       <div class="banner__content">
@@ -270,12 +275,12 @@
         </div>
       </div>
     </section>
-
+{% endblock %}
 <!-- Rodapé -->
-    <footer class="footer">
+    <!-- <footer class="footer">
       <p class="footer__text">
         DevBurger © 2025. Todos os direitos reservados.
       </p>
-    </footer>
+    </footer> -->
   </body>
 </html>

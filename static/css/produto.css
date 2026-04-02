@@ -1,0 +1,119 @@
+/* Container Principal - Alinha imagem e lateral */
+.main-info {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Coluna da Imagem */
+.product-gallery {
+    flex: 1.2;
+}
+
+.main-image img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Coluna da Direita (Buy Box) */
+.product-buy-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.product-seller {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.product-seller strong {
+    color: #333;
+}
+
+/* Preço e Parcelamento */
+.price-section {
+    margin-bottom: 20px;
+}
+
+.price-value {
+    display: block;
+    font-size: 38px;
+    font-weight: 900;
+    color: #ff3131; /* Vermelho do exemplo */
+}
+
+.installments {
+    font-size: 14px;
+    color: #2a9d8f; /* Verde para parcelas */
+    font-weight: 600;
+    margin-top: -5px;
+}
+
+/* Barra de entrega cinza */
+.shipping-info {
+    background-color: #f6f6f6;
+    padding: 12px 15px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #444;
+    font-size: 14px;
+}
+
+/* Botão Comprar Largo */
+.btn-buy-now {
+    background-color: #ff3131;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%; /* Ocupa tudo igual ao modelo */
+    transition: background 0.3s ease;
+}
+
+.btn-buy-now:hover {
+    background-color: #d92626;
+}
+
+/* Seção de Descrição abaixo */
+.product-description-section {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.description-title {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ff3131;
+    display: inline-block;
+}
+
+.description-content p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
