@@ -1,0 +1,277 @@
+/* --- RESET E VARIÁVEIS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+:root {
+    --primary-red: #e63946;
+    --dark-red: #770000;
+    --orange-btn: #f8a03a;
+    --text-dark: #222;
+    --text-gray: #555;
+    --spacing-md: 20px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #fcfcfc;
+}
+
+/* --- HEADER --- */
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    display: flex;
+    justify-content: space-between; /* Espalha Logo, Nav e Social */
+    align-items: center;
+}
+
+.header__logo {
+    color: var(--primary-red);
+    font-weight: bold;
+    font-size: 26px;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+}
+
+.header__menu {
+    display: flex;
+    gap: 25px;
+}
+
+.header__link {
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.header__link:hover {
+    color: var(--orange-btn);
+}
+
+.header__social {
+    display: flex;
+    gap: 15px;
+}
+
+.header__icon {
+    color: var(--text-gray);
+}
+
+.header__toggle {
+    display: none; /* Escondido por padrão (mobile) */
+}
+
+/* --- BANNER --- */
+.banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(185, 4, 4, 0.6)),
+                url('https://images.pexels.com/photos/12034622/pexels-photo-12034622.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.banner__title {
+    font-size: 60px;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 10px;
+}
+
+.banner__title--highlight {
+    color: var(--orange-btn);
+}
+
+/* --- CATEGORIAS --- */
+.categories {
+    padding: 60px 20px;
+}
+
+.categories__title {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--dark-red);
+    margin-bottom: 40px;
+    font-size: 28px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.categories__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.category-item {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px;
+    transition: transform 0.3s;
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+}
+
+.category-item__img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* --- PRODUTOS & CARDS --- */
+.products {
+    padding: 60px 20px;
+    background-color: #f4f4f4;
+}
+
+.products__title {
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--dark-red);
+    margin-bottom: 40px;
+    font-size: 28px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.products__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+.card__image-wrapper {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card__body {
+    padding: 20px;
+}
+
+.card__title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+}
+
+.card__description {
+    color: var(--text-gray);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card__price {
+    font-weight: bold;
+    color: var(--primary-red);
+    font-size: 18px;
+}
+
+/* --- BOTÕES --- */
+.button {
+    background-color: var(--orange-btn);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: #e68a2e;
+}
+
+.button--small {
+    font-size: 12px;
+    padding: 8px 15px;
+}
+
+.products__action {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* --- RODAPÉ --- */
+.footer {
+    background: var(--dark-red);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 0; 
+}
+
+.footer__text {
+    font-family: monospace;
+    font-size: 14px;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .header__nav, .header__social {
+        display: none;
+    }
+    .header__toggle {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    .banner__title {
+        font-size: 40px;
+    }
+}
