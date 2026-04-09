@@ -147,25 +147,29 @@
         <h2 class="products__title">Nossos Destaques</h2>
 
         <div class="products__grid">
+
+
+          {% for produtos in produto %}
           <article class="card" id="lanche-1">
             <div class="card__image-wrapper">
               <img
-                src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=600"
+                src="{{ produtos.foto }}"
                 alt="Classic Dev"
                 class="card__image"
               />
             </div>
             <div class="card__body">
-              <h3 class="card__title">Classic Dev</h3>
+              <h3 class="card__title">{{ produtos.produto }}</h3>
               <p class="card__description">
-                Pão brioche, carne suculenta e queijo derretido.
+                {{produtos.descricao}}
               </p>
               <div class="card__footer">
-                <span class="card__price">R$ 25,00</span>
+                <span class="card__price">{{produtos.preco}}</span>
                 <button class="button button--small">Comprar</button>
               </div>
             </div>
           </article>
+          {% endfor %}
 
           <article class="card" id="lanche-2">
             <div class="card__image-wrapper">
