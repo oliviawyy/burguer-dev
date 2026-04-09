@@ -149,22 +149,22 @@
         <div class="products__grid">
 
 
-          {% for produtos in produto %}
+          {% for produto in produtos %}
             <article class="card" id="lanche-1">
               <div class="card__image-wrapper">
                 <img
-                  src="{{ produtos.foto }}"
+                  src="{{ produto.foto }}"
                   alt="Classic Dev"
                   class="card__image"
                 />
               </div>
               <div class="card__body">
-                <h3 class="card__title">{{ produtos.produto }}</h3>
+                <h3 class="card__title">{{ produto.produtos }}</h3>
                 <p class="card__description">
-                  {{produtos.descricao}}
+                  {{produto.descricao}}
                 </p>
                 <div class="card__footer">
-                  <span class="card__price">{{produtos.preco}}</span>
+                  <span class="card__price">{{produto.preco}}</span>
                   <button class="button button--small">Comprar</button>
                 </div>
               </div>
