@@ -5,7 +5,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def pagina_principal():
-    return render_template("index.html", produto = capturando_produtos)
+    produtos = capturando_produtos()
+    return render_template("index.html", produtos = produtos)
 
 # @app.route("/layout")
 # def layout():
