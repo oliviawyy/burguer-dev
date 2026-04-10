@@ -1,5 +1,5 @@
 create database if not exists DevBurguer;
-use DevBurguer
+use DevBurguer;
 
 CREATE TABLE if not exists produtos (
     codigo int auto_increment primary key,
