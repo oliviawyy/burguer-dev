@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, redirect, request
 from model.produto import capturando_produtos, rec_destaque, recuperar_produto
 
 app = Flask(__name__)
@@ -19,9 +19,16 @@ def pagina_pagina2(codigo):
     return render_template("pagina2.html", produto = produto)
 
 
-@app.route("/login")
+@app.route("/login", methods=["POST"])
 def login():
-    return render_template("login.html")
+    session["nome"]= "olivia"
+    return redirect("/")
+
+@app.route('/logar', methods=['POST'])
+def logar():
+    input_email = request.form.get("email")
+    input_senha = request.form.get("senha")
+    
 
 if __name__=="__main__":
     app.run(debug=True)
