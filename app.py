@@ -13,7 +13,7 @@ def pagina_principal():
 # def layout():
 #     return render_template("layout.html")
 
-@app.route("/pagina2/<codigo>")
+@app.route("/pagina2/<int:codigo>")
 def pagina_pagina2(codigo):
     produto = recuperar_produto(codigo)  #recuperar produto com código 
     return render_template("pagina2.html", produto = produto)

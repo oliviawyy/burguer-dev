@@ -24,43 +24,6 @@
   </head>
   <body>
 
-  <!-- Header e Navbar -->
-    <!-- <header class="header">
-      <div class="header__container">
-        <a href="#" class="header__logo">DevBurger</a>
-
-        <nav class="header__nav">
-          <ul class="header__menu">
-            <li class="header__item">
-              <a href="#" class="header__link">Home</a>
-            </li>
-            <li class="header__item">
-              <a href="#menu" class="header__link">Cardápio</a>
-            </li>
-            <li class="header__item">
-              <a href="#" class="header__link">Sobre</a>
-            </li>
-            <li class="header__item">
-              <a href="#" class="header__link">Contato</a>
-            </li>
-          </ul>
-        </nav>
-
-        <div class="header__social">
-          <a href="#" class="header__icon"
-            ><span class="material-symbols-outlined">thumb_up</span></a
-          >
-          <a href="#" class="header__icon"
-            ><span class="material-symbols-outlined">photo_camera</span></a
-          >
-        </div>
-
-        <button class="header__toggle">
-          <span class="material-symbols-outlined">menu</span>
-        </button>
-      </div>
-    </header> -->
-
 {% extends "layout.html" %}
 
 
@@ -89,11 +52,11 @@
         <div class="categories__list">
           <div class="category-item">
             <img
-              src="{{produtos.foto}}"
-              alt="{{produtos.produto}}"
+              src="{{destaque.foto}}"
+              alt="{{destaque.produto}}"
               class="category-item__img"
             />
-            <a href="{{produtos.codigo}}" class="button button--small">EU QUERO</a>
+            <a href="{{destaque.codigo}}" class="button button--small">EU QUERO</a>
           </div>
         {% endfor %}
           
@@ -115,13 +78,13 @@
                 />
               </div>
               <div class="card__body">
-                <h3 class="card__title">{{ produto.produtos }}</h3>
+                <h3 class="card__title">{{ produto.produto }}</h3>
                 <p class="card__description">
                   {{produto.descricao}}
                 </p>
                 <div class="card__footer">
                   <span class="card__price">{{produto.preco}}</span>
-                  <button class="button button--small">Comprar</button>
+                  <button class="button button--small"><a href="/rec_destaque/{{produto.codigo}}">Comprar</a></button>
                 </div>
               </div>
             </article>

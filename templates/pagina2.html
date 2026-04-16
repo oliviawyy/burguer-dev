@@ -1,8 +1,8 @@
-{%block css_adicional%}
-<link rel="stylesheet" href="../static/css/produto.css">
-{%endblock%}
-
 {% extends "layout.html" %}
+
+{%block css_adicional%}
+<link rel="stylesheet" href="{{ url_for('static',filename = '../static/css/produto.css') }}">
+{%endblock%}
 
 {% block conteudo %}
 <main class="page-details">
