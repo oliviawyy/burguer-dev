@@ -13,3 +13,8 @@ CREATE TABLE if not exists produtos (
 
 insert into produtos(produto, descricao, preco, destaque, foto, disponibilidade)
 values("Godo Burguer", "Um lanche especial espera por voce com uma carne divina", 24.00, 1, "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=200", 1)
+
+
+
+
+

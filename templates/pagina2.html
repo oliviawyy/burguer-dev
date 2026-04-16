@@ -1,27 +1,25 @@
 {% extends "layout.html" %}
 
-{%block css_adicional%}
-<link rel="stylesheet" href="{{ url_for('static',filename = '../static/css/produto.css') }}">
-{%endblock%}
+{% block css_adicional %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/produto.css') }}">
+{% endblock %}
 
 {% block conteudo %}
 <main class="page-details">
     <div class="details-container">
-        
         <section class="main-info">
-            
             <div class="product-gallery">
                 <div class="main-image">
-                    <img src="{{produto.foto}}" alt="Classic Dev">
+                    <img src="{{ produto.foto }}" alt="{{ produto.produto }}">
                 </div>
             </div>
 
             <div class="product-buy-box">
-                <h1 class="product-title">{{produto.produto}}</h1>
+                <h1 class="product-title">{{ produto.produto }}</h1>
                 <p class="product-seller">Vendido e entregue por <strong>DevBurger</strong></p>
                 
                 <div class="price-section">
-                    <span class="price-value">R$ {{produto.preco}}</span>
+                    <span class="price-value">R$ {{ produto.preco }}</span>
                     <p class="installments">Em até 3x no cartão</p>
                 </div>
 
@@ -30,18 +28,16 @@
                     <p>Entrega rápida na sua região</p>
                 </div>
 
-                <button class="btn-buy-now">Comprar</button>
+                <button class="btn-buy-now">Finalizar Compra</button>
             </div>
         </section>
 
         <section class="product-description-section">
             <h2 class="description-title">Descrição do produto</h2>
             <div class="description-content">
-                <p>{{produto.descricao}}
-                </p>
+                <p>{{ produto.descricao }}</p>
             </div>
         </section>
-
     </div>
 </main>
 {% endblock %}

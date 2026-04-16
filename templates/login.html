@@ -1,0 +1,46 @@
+{%block css_adicional%}
+<link rel="stylesheet" href="../static/css/login.css">
+{%endblock%}
+
+{% extends "layout.html" %} {% block conteudo %} <main class="auth-container">
+    <section class="auth-card">
+        <h2 class="auth-title">
+            <span class="material-symbols-outlined">login</span>
+            Já sou cliente
+        </h2>
+        <form action="#" method="POST" class="auth-form">
+            <div class="input-group">
+                <label for="login-email">E-mail</label>
+                <input type="email" id="login-email" name="email" placeholder="Digite seu e-mail" required>
+            </div>
+            <div class="input-group">
+                <label for="login-password">Senha</label>
+                <input type="password" id="login-password" name="password" placeholder="Sua senha" required>
+            </div>
+            <button type="submit" class="btn-auth btn-login">Entrar no Sistema</button>
+        </form>
+    </section>
+
+    <section class="auth-card" style="border-top-color: var(--orange-btn);">
+        <h2 class="auth-title" style="color: var(--orange-btn);">
+            <span class="material-symbols-outlined">person_add</span>
+            Criar Conta
+        </h2>
+        <form action="#" method="POST" class="auth-form">
+            <div class="input-group">
+                <label for="reg-name">Nome Completo</label>
+                <input type="text" id="reg-name" name="name" placeholder="Como quer ser chamado?" required>
+            </div>
+            <div class="input-group">
+                <label for="reg-email">E-mail</label>
+                <input type="email" id="reg-email" name="email" placeholder="Seu melhor e-mail" required>
+            </div>
+            <div class="input-group">
+                <label for="reg-password">Senha</label>
+                <input type="password" id="reg-password" name="password" placeholder="Crie uma senha forte" required>
+            </div>
+            <button type="submit" class="btn-auth btn-register">Finalizar Cadastro</button>
+        </form>
+    </section>
+</main>
+{% endblock %}

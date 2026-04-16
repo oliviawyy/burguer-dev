@@ -1,0 +1,109 @@
+/* Container que segura as duas caixas lado a lado */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha pelo topo */
+    gap: 40px;
+    max-width: 1000px;
+    margin: 60px auto; /* Espaço em cima e embaixo */
+    padding: 0 20px;
+    flex-wrap: wrap; /* Para telas menores, um desce para baixo do outro */
+}
+
+/* Estilo do Card (Caixa Branca) */
+.auth-card {
+    background-color: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    flex: 1;
+    min-width: 320px;
+    border-top: 6px solid var(--primary-red); /* Linha vermelha no topo */
+    transition: transform 0.3s ease;
+}
+
+.auth-card:hover {
+    transform: translateY(-5px); /* Efeito de flutuar levemente */
+}
+
+/* Títulos das seções */
+.auth-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6rem;
+    color: var(--dark-red);
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+}
+
+/* Formulários e Grupos de Input */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    text-transform: uppercase;
+}
+
+.input-group input {
+    padding: 12px 15px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--orange-btn); /* Muda cor ao clicar */
+}
+
+/* Botões Estilizados */
+.btn-auth {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: filter 0.2s, transform 0.1s;
+    margin-top: 10px;
+}
+
+.btn-auth:active {
+    transform: scale(0.97);
+}
+
+.btn-login {
+    background-color: var(--primary-red);
+}
+
+.btn-register {
+    background-color: var(--orange-btn);
+}
+
+.btn-auth:hover {
+    filter: brightness(0.9); /* Escurece levemente no hover */
+}
+
+/* Ajuste para ícones do Material Symbols */
+.material-symbols-outlined {
+    font-size: 24px;
+}

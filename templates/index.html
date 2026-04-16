@@ -1,108 +1,50 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevBurger - Flex & Grid 2025</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-    />
-
-<!-- Incluir os links para CSS (pode ter mais arquivos ou arquivos com nomes diferentes) -->
-    <link rel="stylesheet" href="../static/css/reset.css" />
-    <link rel="stylesheet" href="../static/css/variables.css" />
-    <link rel="stylesheet" href="../static/css/main.css" />
-    <link rel="stylesheet" href="../static/css/media.css" />
-  </head>
-  <body>
-
 {% extends "layout.html" %}
 
-
 {% block conteudo %}
+<section class="banner">
+  <div class="banner__content">
+    <h1 class="banner__title">Code & <span class="banner__title--highlight">Flavor</span></h1>
+  </div>
+</section>
 
-<!-- Banner -->
-    <section class="banner">
-      <div class="banner__content">
-        <h1 class="banner__title">
-          Code & <span class="banner__title--highlight">Flavor</span>
-        </h1>
-        <p class="banner__subtitle">
-          O melhor hambúrguer da cidade compilado para você.
-        </p>
+<section class="categories">
+  <div class="categories__container">
+    <h2 class="categories__title">Escolha Rápida</h2>
+    <div class="categories__list"> 
+      {% for destaque in destaques %}
+      <div class="category-item">
+        <img src="{{ destaque.foto }}" alt="{{ destaque.produto }}" class="category-item__img" />
+        <a href="/pagina2/{{ destaque.codigo }}" class="button button--small">EU QUERO</a>
       </div>
-    </section>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
-<!-- Escolha Rápida  -->
+<section class="products" id="menu">
+  <div class="products__container">
+    <h2 class="products__title">Nossos Destaques</h2>
 
-    <section class="categories">
-      <div class="categories__container">
-        <h2 class="categories__title">Escolha Rápida</h2>
-
-        {% for destaque in destaques %}
-
-        <div class="categories__list">
-          <div class="category-item">
-            <img
-              src="{{destaque.foto}}"
-              alt="{{destaque.produto}}"
-              class="category-item__img"
-            />
-            <a href="{{destaque.codigo}}" class="button button--small">EU QUERO</a>
-          </div>
-        {% endfor %}
-          
-<!-- Produtos do Menu -->
-    <section class="products" id="menu">
-      <div class="products__container">
-        <h2 class="products__title">Nossos Destaques</h2>
-
-        <div class="products__grid">
-
-
-          {% for produto in produtos %}
-            <article class="card" id="lanche-1">
-              <div class="card__image-wrapper">
-                <img
-                  src="{{ produto.foto }}"
-                  alt="Classic Dev"
-                  class="card__image"
-                />
-              </div>
-              <div class="card__body">
-                <h3 class="card__title">{{ produto.produto }}</h3>
-                <p class="card__description">
-                  {{produto.descricao}}
-                </p>
-                <div class="card__footer">
-                  <span class="card__price">{{produto.preco}}</span>
-                  <button class="button button--small"><a href="/rec_destaque/{{produto.codigo}}">Comprar</a></button>
-                </div>
-              </div>
-            </article>
-          {% endfor %}
-
-        <div style="text-align: center; margin-top: 40px">
-          <a href="#menu" class="button button--primary"
-            >Voltar para Destaques</a
-          >
+    <div class="products__grid"> {% for produto in produtos %}
+      <article class="card">
+        <div class="card__image-wrapper">
+          <img src="{{ produto.foto }}" alt="{{ produto.produto }}" class="card__image" />
         </div>
-      </div>
-    </section>
+        <div class="card__body">
+          <h3 class="card__title">{{ produto.produto }}</h3>
+          <p class="card__description">{{ produto.descricao }}</p>
+          <div class="card__footer">
+            <span class="card__price">R$ {{ produto.preco }}</span>
+            <a href="/pagina2/{{ produto.codigo }}" class="button button--small">Comprar</a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div style="text-align: center; margin-top: 40px">
+      <a href="#menu" class="button button--primary">Voltar para Destaques</a>
+    </div>
+  </div>
+</section>
 {% endblock %}
-<!-- Rodapé -->
-    <!-- <footer class="footer">
-      <p class="footer__text">
-        DevBurger © 2025. Todos os direitos reservados.
-      </p>
-    </footer> -->
-  </body>
-</html>

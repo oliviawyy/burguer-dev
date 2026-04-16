@@ -19,6 +19,9 @@ def pagina_pagina2(codigo):
     return render_template("pagina2.html", produto = produto)
 
 
+@app.route("/login")
+def login():
+    return render_template("login.html")
 
 if __name__=="__main__":
     app.run(debug=True)
