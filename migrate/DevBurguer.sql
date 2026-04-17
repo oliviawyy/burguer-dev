@@ -16,11 +16,9 @@ values("Godo Burguer", "Um lanche especial espera por voce com uma carne divina"
 
 
 CREATE TABLE IF NOT EXISTS usuarios (
-    id INT AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL,
+    nome VARCHAR(100) DEFAULT "ANONIMO",
     usuario VARCHAR(100) NOT NULL PRIMARY KEY,
-    senha VARCHAR(255) NOT NULL,
-    UNIQUE KEY (id)
+    senha VARCHAR(255) NOT NULL
 );
 
 
