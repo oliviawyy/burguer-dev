@@ -1,8 +1,24 @@
 from flask import Flask, render_template, session, redirect, request
 from model.produto import capturando_produtos, rec_destaque, recuperar_produto
 from model.usuarios import Usuarios
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+
+lista_produtos = [
+                    {"codigo": 1,
+                    "nome": "Hamburguer", 
+                    "preco": 20.9, 
+                    "foto": "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=200"
+                    },
+                    {"codigo": 2,
+                    "nome": "Super Godofredo",
+                    "preco": 50.00,
+                    "foto": "https://www.sabornamesa.com.br/media/k2/items/cache/bf1e20a4462b71e3cc4cece2a8c96ac8_XL.jpg"
+                    }
+
+                ]
 
 app.secret_key = "banana_verde"
 
