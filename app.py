@@ -4,6 +4,8 @@ from model.usuarios import Usuarios
 
 app = Flask(__name__)
 
+app.secret_key = "banana_verde"
+
 @app.route("/")
 def pagina_principal():
     produtos = capturando_produtos()
@@ -37,7 +39,7 @@ def cadastrar():
 
     return redirect("/")
 
-@app.route("/logar/usuario", method=["POST"])
+@app.route("/login/usuario", methods=["POST"])
 def logar_usuario():
     usuario = request.form.get("usuario")
     senha = request.form.get("senha")
@@ -45,7 +47,7 @@ def logar_usuario():
     resultado = Usuarios.verificar_usuario(usuario, senha )
 
     if not resultado:
-        session["usuario_logado"] = resultado
+        session["nome"] = resultado["nome"]
 
     return redirect("/")
 

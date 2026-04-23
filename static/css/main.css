@@ -11,8 +11,8 @@
     --primary-red: #e63946;
     --dark-red: #770000;
     --orange-btn: #f8a03a;
-    --text-dark: #222;
-    --text-gray: #555;
+    --text-dark: #ffffff;
+    --text-gray: #999898;
     --spacing-md: 20px;
 }
 
@@ -24,7 +24,7 @@ body {
 
 /* --- HEADER --- */
 .header {
-    background-color: #fff;
+    background-color: #000000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
