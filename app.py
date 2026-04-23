@@ -37,6 +37,19 @@ def cadastrar():
 
     return redirect("/")
 
+@app.route("/logar/usuario", method=["POST"])
+def logar_usuario():
+    usuario = request.form.get("usuario")
+    senha = request.form.get("senha")
+
+    resultado = Usuarios.verificar_usuario(usuario, senha )
+
+    if not resultado:
+        session["usuario_logado"] = resultado
+
+    return redirect("/")
+
+
 @app.route("/login", methods=["GET"])
 def pagina_login():
     return render_template("login.html")

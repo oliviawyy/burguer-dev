@@ -15,16 +15,16 @@ class Usuarios():
         conexao.commit()
         conexao.close()
         
-
+    @staticmethod
     def verificar_usuario(usuario, senha):
         try:
             conexao, cursor = conectar.conectar()
 
-            cursor.execute("""SELECT usuario, senha from usuarios where usuario = %s""", [usuario])
+            cursor.execute("""SELECT usuario, senha from usuarios where usuario = %s""", [usuario, senha])
             usuario = cursor.fetchone()
             conexao.commit()
             conexao.close()
-            return True
+            return usuario
         
         except Exception as erro:
             print(erro)
