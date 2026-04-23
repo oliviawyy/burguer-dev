@@ -26,6 +26,7 @@ function mostrar_carrinho() {
 
             carrinho.innerHTML += linha;
         }
+        document.querySelector(".cart-item__price").textContent = "R$" + total
     }
 }
 
