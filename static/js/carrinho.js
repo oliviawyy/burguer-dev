@@ -1,4 +1,4 @@
-function mostrar_carrinho() {
+async function mostrar_carrinho() {
     const resposta = await fetch("/api/get/carrinho")
 
     if (!resposta.ok) {
@@ -15,11 +15,11 @@ function mostrar_carrinho() {
 
         for (let dado of dados) {
             total += dado.preco;
-            
+
             let linha = `<div class="cart-item">
-          <img src="${dado.imagem}" alt="Hambúrguer Clássico" class="cart-item__img" />
+          <img src="${dado.foto}" alt="Hambúrguer Clássico" class="cart-item__img" />
           <div class="cart-item__details">
-            <h3 class="cart-item__name">${dado.nome}</h3>
+            <h3 class="cart-item__name">${dado.produto}</h3>
             <p class="cart-item__price">${dado.preco}</p>
           </div>
           <button class="cart-item__remove">Remover</button>

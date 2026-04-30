@@ -18,14 +18,12 @@ class Usuarios():
     @staticmethod
     def verificar_usuario(usuario, senha):
         try:
-            conexao, cursor = conectar.conectar()
-
-            cursor.execute("""SELECT usuario, senha from usuarios where usuario = %s""", [usuario, senha])
-            usuario = cursor.fetchone()
-            conexao.commit()
+            conexao, cursor = conectar()
+    
+            cursor.execute("""SELECT usuario, nome FROM usuarios WHERE usuario = %s AND senha = %s""", [usuario, senha])
+            resultado = cursor.fetchone()
             conexao.close()
-            return usuario
-        
+            return resultado 
         except Exception as erro:
-            print(erro)
+            print(f"Erro no login: {erro}")
             return False

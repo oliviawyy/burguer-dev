@@ -4,17 +4,17 @@ def recuperar_carrinho(usuario:str) -> list:
     conexao, cursor = conectar()
     cursor.execute("""
                     SELECT 	carrinhos.cod_carrinho,
-		                    usuarios.usuario,
+		                    carrinhos.usuario_id,
                             carrinhos.data,
                             carrinhos.finalizado,
-                            itens.produto,
-                            itens_carrinho.quantidade,
-                            itens.preco,
-                            itens.imagem
+                            produtos.produto,
+                            itens_do_carrinho.quantidade,
+                            produtos.preco,
+                            produtos.foto
                     FROM carrinhos
-                    INNER JOIN itens_carrinho ON carrinhos.cod_carrinho = itens_carrinho.cod_carrinho
-                    INNER JOIN itens ON itens.codigo = itens_carrinho.cod_produto
-                    WHERE usuarios.usuario = %s;
+                    INNER JOIN itens_do_carrinho ON carrinhos.cod_carrinho = itens_do_carrinho.cod_carrinho
+                    INNER JOIN produtos ON produtos.codigo = itens_do_carrinho.cod_produto
+                    WHERE carrinhos.usuario_id = %s;
         
                     """, [usuario])
     resultado = cursor.fetchone()
