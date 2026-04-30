@@ -1,5 +1,5 @@
 function mostrar_carrinho() {
-    const resposta = await fetch("http://10.110.134.2:8080/api/get/carrinho")
+    const resposta = await fetch("/api/get/carrinho")
 
     if (!resposta.ok) {
         alert("ERRO AO CARREGAR O CARRINHO!")
@@ -15,6 +15,7 @@ function mostrar_carrinho() {
 
         for (let dado of dados) {
             total += dado.preco;
+            
             let linha = `<div class="cart-item">
           <img src="${dado.imagem}" alt="Hambúrguer Clássico" class="cart-item__img" />
           <div class="cart-item__details">
@@ -29,6 +30,3 @@ function mostrar_carrinho() {
         document.querySelector(".cart-item__price").textContent = "R$" + total
     }
 }
-
-
-mostrarCarrinho
