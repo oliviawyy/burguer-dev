@@ -1,5 +1,5 @@
 from flask import Flask, render_template, session, redirect, request, jsonify
-from model.carrinho import recuperar_carrinho
+from model.carrinho import inserir_item, recuperar_carrinho
 from model.produto import capturando_produtos, rec_destaque, recuperar_produto
 from model.usuarios import Usuarios
 
@@ -69,6 +69,21 @@ def api_get_carrinho():
 def pagina_login():
     return render_template("login.html")
     
+@app.route("/api/post/itens_do_carrinho", methods=["POST"])
+def api_post_itens_do_carrinho():
+    if "usuario_logado" in session:
+        usuario_id = session["usuario_logado"]["usuario"]
+
+        dados_json = request.get_json()
+        cod_produto = dados_json.get("cod_produto")
+        quantidade = dados_json.get("quantidade")
+
+        inserir_item(usuario_id, cod_produto, quantidade)
+        return jsonify({"message": "Item adicionado ao carrinho com sucesso!"}), 201
+    else:
+        
+        return redirect("/login")
+
 
 if __name__=="__main__":
     app.run(debug=True)

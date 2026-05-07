@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GodoBurger - 2025</title>
@@ -14,82 +14,215 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/variables.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/media.css') }}" />
-    
+
     {% block css_adicional %}{% endblock %}
-  </head>
-  <body>
+
+    <style>
+        /* ESTILO DO CARRINHO LATERAL */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px; /* Escondido */
+            width: 350px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            z-index: 9999;
+            transition: right 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+
+        .cart-sidebar.active {
+            right: 0; /* Aparece */
+        }
+
+        .cart__header {
+            padding: 20px;
+            background: #222;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .cart__items {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .cart-item-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart__footer {
+            padding: 20px;
+            border-top: 2px solid #eee;
+            background: #f9f9f9;
+        }
+
+        .cart__footer p {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .button-checkout {
+            width: 100%;
+            padding: 15px;
+            background-color: #e31a1a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        /* Overlay para escurecer o fundo */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 9998;
+        }
+
+        .cart-overlay.active {
+            display: block;
+        }
+
+        /* Badge de contador no ícone */
+        #cart-count {
+            background: #e31a1a;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 50%;
+            vertical-align: top;
+            margin-left: -10px;
+        }
+    </style>
+</head>
+<body>
     <header class="header">
-      <div class="header__container">
-        {{session.nome}}
-        <a href="/" class="header__logo">DevBurger</a>
-        <nav class="header__nav">
-          <ul class="header__menu">
-            <li class="header__item"><a href="/" class="header__link">Home</a></li>
-            <li class="header__item"><a href="#menu" class="header__link">Cardápio</a></li>
-            <li class="header__item"><a href="#" class="header__link">Sobre</a></li>
-            <li class="header__item"><a href="#" class="header__link">Contato</a></li>
-          </ul>
-        </nav>
-        <div class="header__social">
-          <a href="#" class="header__icon"><span class="material-symbols-outlined">thumb_up</span></a>
-          <a href="#" class="header__icon"><span class="material-symbols-outlined">photo_camera</span></a>
+        <div class="header__container">
+            {{session.nome}}
+            <a href="/" class="header__logo">DevBurger</a>
+            <nav class="header__nav">
+                <ul class="header__menu">
+                    <li class="header__item"><a href="/" class="header__link">Home</a></li>
+                    <li class="header__item"><a href="#menu" class="header__link">Cardápio</a></li>
+                    <li class="header__item"><a href="#" class="header__link">Sobre</a></li>
+                    <li class="header__item"><a href="#" class="header__link">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="header__social">
+                <a href="javascript:void(0)" id="cart-button" class="header__icon">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span id="cart-count">0</span>
+                </a>
+            </div>
         </div>
-      </div>
     </header>
 
     {% block conteudo %} 
     {% endblock %}
 
-     <!-- CARRINHO -->
-    <div id="cart" class="cart">
-      <div class="cart__header">
-        <h2>Seu Carrinho</h2>
-        <button id="close-cart">✖</button>
-      </div>
+    <div id="cart" class="cart-sidebar">
+        <div class="cart__header">
+            <h2>Seu Carrinho</h2>
+            <button id="close-cart">✖</button>
+        </div>
 
-      <div class="cart__items" id="cart-items"></div>
+        <div class="cart__items" id="cart-items">
+            {% if session.carrinho %}
+                {% for item in session.carrinho %}
+                    <div class="cart-item-row">
+                        <span>{{ item.nome }}</span>
+                        <span>R$ {{ "%.2f"|format(item.preco) }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
 
-      <div class="cart__footer">
-        <p>Total: R$ <span id="cart-total">0.00</span></p>
-        <button class="button">Finalizar Compra</button>
-      </div>
+        <div class="cart__footer">
+            <p>Total: R$ <span id="cart-total">0.00</span></p>
+            <button class="button-checkout">Finalizar Compra</button>
+        </div>
     </div>
 
+    <div id="cart-overlay" class="cart-overlay"></div>
+
     <footer class="footer">
-      <p class="footer__text">DevBurger © 2025. Todos os direitos reservados.</p>
+        <p class="footer__text">DevBurger © 2025. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- JS -->
     <script>
-      const cart = document.getElementById("cart");
-      const openBtn = document.getElementById("cart-button");
-      const closeBtn = document.getElementById("close-cart");
+        const cart = document.getElementById("cart");
+        const overlay = document.getElementById("cart-overlay");
+        const openBtn = document.getElementById("cart-button");
+        const closeBtn = document.getElementById("close-cart");
+        const cartItemsContainer = document.getElementById("cart-items");
+        const cartTotalDisplay = document.getElementById("cart-total");
+        const cartCountDisplay = document.getElementById("cart-count");
 
-      let total = 0;
+        let total = 0;
+        let count = 0;
 
-      openBtn.addEventListener("click", () => {
-        cart.classList.add("active");
-      });
+        // Abrir carrinho
+        openBtn.addEventListener("click", () => {
+            cart.classList.add("active");
+            overlay.classList.add("active");
+        });
 
-      closeBtn.addEventListener("click", () => {
-        cart.classList.remove("active");
-      });
+        // Fechar carrinho
+        const closeCart = () => {
+            cart.classList.remove("active");
+            overlay.classList.remove("active");
+        };
 
-      function addToCart(nome, preco) {
-        const cartItems = document.getElementById("cart-items");
-        const cartTotal = document.getElementById("cart-total");
+        closeBtn.addEventListener("click", closeCart);
+        overlay.addEventListener("click", closeCart);
 
-        const item = document.createElement("div");
-        item.innerHTML = `<p>${nome} - R$ ${preco}</p>`;
+        // Função para adicionar itens (chamada pelos botões no seu cardápio)
+        function addToCart(nome, preco) {
+            const itemElement = document.createElement("div");
+            itemElement.className = "cart-item-row";
+            itemElement.innerHTML = `
+                <span>${nome}</span>
+                <span>R$ ${preco.toFixed(2)}</span>
+            `;
 
-        cartItems.appendChild(item);
+            cartItemsContainer.appendChild(itemElement);
 
-        total += preco;
-        cartTotal.innerText = total.toFixed(2);
+            total += preco;
+            count++;
 
-        cart.classList.add("active");
-      }
+            cartTotalDisplay.innerText = total.toFixed(2);
+            cartCountDisplay.innerText = count;
+
+            // Abre o carrinho automaticamente para mostrar o item adicionado
+            cart.classList.add("active");
+            overlay.classList.add("active");
+        }
     </script>
-
-  </body>
+</body>
 </html>

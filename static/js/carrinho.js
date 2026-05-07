@@ -30,3 +30,23 @@ async function mostrar_carrinho() {
         document.querySelector(".cart-item__price").textContent = "R$" + total
     }
 }
+mostrar_carrinho();
+
+async function inserirItemCarrinho(cod_produto,quantidade=1) {
+    const resposta = await fetch("/api/post/itens_do_carrinho", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "cod_produto": cod_produto,
+            "quantidade": quantidade
+        })
+    });
+
+    if (!resposta.ok) {
+        alert("ERRO AO ADICIONAR ITEM AO CARRINHO!");
+    } else {
+        mostrar_carrinho();
+    }
+}
