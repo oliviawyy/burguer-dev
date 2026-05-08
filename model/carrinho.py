@@ -17,7 +17,7 @@ def recuperar_carrinho(usuario:str) -> list:
                     WHERE carrinhos.usuario_id = %s;
         
                     """, [usuario])
-    resultado = cursor.fetchone()
+    resultado = cursor.fetchall()
     conexao.close()
     return resultado
 

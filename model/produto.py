@@ -16,7 +16,7 @@ def capturando_produtos():
 def rec_destaque():
     conexao, cursor = conectar()
     cursor.execute("""
-                    SELECT destaque, foto from produtos WHERE destaque = 1;
+                    SELECT codigo, destaque, foto from produtos WHERE destaque = 1;
                     """)
     resultado = cursor.fetchall()
     conexao.close()

@@ -6,6 +6,7 @@ async function mostrar_carrinho() {
     }
     else {
         const dados = await resposta.json()
+        console.log(dados)
  
         const carrinho = document.getElementById("carrinho")
 
