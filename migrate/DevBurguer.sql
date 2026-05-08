@@ -35,7 +35,8 @@ CREATE TABLE IF NOT EXISTS itens_do_carrinho (
 );
 
 insert into produtos(produto, descricao, preco, destaque, foto, disponibilidade)
-values("Godo Burguer", "Um lanche especial espera por voce com uma carne divina", 24.00, 1, "https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&w=200", 1);
+values("Godo Burguer", "Um lanche especial espera por voce com uma carne divina", 24.00, 1, "https://supermercadosrondon.com.br/guiadecarnes/images/postagens/quer_fazer_hamburger_artesanal_perfeito_2019-05-14.jpg", 1),
+("X-Salada", "é um clássico sanduíche brasileiro, composto por pão de hambúrguer selado na chapa, hambúrguer, queijo derretido, alface, tomate e maionese", 25.00, 2, "https://www.sabornamesa.com.br/media/k2/items/cache/b4cd45b9dcdf28778c9b938159445747_XL.jpg", 1);
 
 
 INSERT INTO `devburguer`.`usuarios` (`nome`, `usuario`, `senha`) VALUES ('olivia', 'oliviawyu', '123');

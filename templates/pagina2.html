@@ -2,6 +2,30 @@
 
 {% block css_adicional %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/produto.css') }}">
+<style>
+    /* Força o layout a ocupar a tela toda */
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    /* O main cresce para empurrar o footer e centraliza o lanche */
+    .page-details {
+        flex: 1;
+        display: flex;
+        align-items: center; /* Centraliza verticalmente */
+        justify-content: center; /* Centraliza horizontalmente */
+        padding: 40px 0;
+    }
+
+    .details-container {
+        width: 100%;
+        max-width: 1100px; /* Ajuste conforme seu design */
+        margin: 0 auto;
+    }
+</style>
 {% endblock %}
 
 {% block conteudo %}
@@ -19,7 +43,7 @@
                 <p class="product-seller">Vendido e entregue por <strong>DevBurger</strong></p>
                 
                 <div class="price-section">
-                    <span class="price-value">R$ {{ produto.preco }}</span>
+                    <span class="price-value">R$ {{ "%.2f"|format(produto.preco)|replace('.', ',') }}</span>
                     <p class="installments">Em até 3x no cartão</p>
                 </div>
 

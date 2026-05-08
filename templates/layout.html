@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/media.css') }}" />
 
+    <script src="../static/js/carrinho.js" defer></script>
+
     {% block css_adicional %}{% endblock %}
 
     <style>
@@ -152,7 +154,7 @@
             <button id="close-cart">✖</button>
         </div>
 
-        <div class="cart__items" id="cart-items">
+        <div class="cart__items" id="carrinho">
             {% if session.carrinho %}
                 {% for item in session.carrinho %}
                     <div class="cart-item-row">

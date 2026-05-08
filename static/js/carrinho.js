@@ -6,7 +6,7 @@ async function mostrar_carrinho() {
     }
     else {
         const dados = await resposta.json()
-
+ 
         const carrinho = document.getElementById("carrinho")
 
         carrinho.innerHTML = "";
@@ -47,6 +47,7 @@ async function inserirItemCarrinho(cod_produto,quantidade=1) {
     if (!resposta.ok) {
         alert("ERRO AO ADICIONAR ITEM AO CARRINHO!");
     } else {
-        mostrar_carrinho();
+        
     }
 }
+mostrar_carrinho();
